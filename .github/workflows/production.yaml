@@ -55,6 +55,7 @@ jobs:
         id: check_release
         run: |
           RESPONSE=$(curl \
+            --http1.1 \
             --silent \
             --show-error \
             --header "Authorization: Bearer ${{ secrets.PAT }}" \
