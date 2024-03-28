@@ -67,7 +67,7 @@ jobs:
         if: steps.check_release.outputs.exists == 'false'
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: '${{ secrets.PAT }}'
+          github_token: '${{ secrets.PAT }}'
         with:
           tag_name: '${{ steps.package.outputs.version }}'
           release_name: 'Release ${{ steps.package.outputs.version }}'
