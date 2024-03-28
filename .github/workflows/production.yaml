@@ -67,7 +67,7 @@ jobs:
         if: steps.check_release.outputs.exists == 'false'
         uses: actions/create-release@v1
         env:
-          github_token: '${{ secrets.PAT }}'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: '${{ steps.package.outputs.version }}'
           release_name: 'Release ${{ steps.package.outputs.version }}'
@@ -78,3 +78,4 @@ jobs:
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > .npmrc
           npm publish
+          rm .npmrc
